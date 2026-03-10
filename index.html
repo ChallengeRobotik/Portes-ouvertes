@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portes Ouvertes</title>
+    <style>
+        /* Configuration de base pour occuper tout l'écran */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Empêche les barres de défilement */
+            background-color: #020408; /* Noir spatial très profond */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
+        /* --- ARRIÈRE-PLAN ANIMÉ (SOBRE) --- */
+
+        /* 1. La Nébuleuse (lueurs colorées très diffuses) */
+        .nebula {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(40, 20, 90, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(15, 70, 90, 0.4) 0%, transparent 50%);
+            filter: blur(60px);
+            z-index: 1;
+            animation: pulseNebula 15s ease-in-out infinite alternate;
+        }
+
+        /* 2. Les Étoiles fixes/scintillantes */
+        .stars {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Image d'étoiles répétée. Source externe fiable pour l'exemple */
+            background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png') repeat;
+            z-index: 2;
+            opacity: 0.6;
+        }
+
+        @keyframes pulseNebula {
+            from { opacity: 0.6; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* --- CONTENU CENTRAL --- */
+
+        .content-container {
+            position: relative;
+            z-index: 10; /* Passe au-dessus du fond spatial */
+            text-align: center;
+            /* Animation de flottaison sur tout le bloc */
+            animation: floatLogo 6s ease-in-out infinite;
+        }
+
+        /* L'image de ton design */
+        .logo-img {
+            width: 90vw; /* Utilise 90% de la largeur de l'écran maximum */
+            max-width: 600px; /* Mais ne dépasse pas 600px pour rester net */
+            height: auto;
+            display: block;
+            margin: 0 auto 40px auto; /* Centre horizontalement et met de l'espace en bas */
+            /* Optionnel: légère lueur discrète autour du logo */
+            filter: drop-shadow(0 0 15px rgba(100, 200, 255, 0.3));
+        }
+
+        /* Le texte "Bienvenue" unique */
+        h1 {
+            color: #ffffff;
+            font-size: 3.5rem; /* Très grand */
+            font-weight: 300; /* Fin et élégant */
+            text-transform: uppercase; /* Tout en majuscules */
+            letter-spacing: 8px; /* Espacement important entre les lettres */
+            margin: 0;
+            padding: 0;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.6); /* Effet néon blanc */
+        }
+
+        /* --- ANIMATION DE FLOTTAISON DOUCE --- */
+        @keyframes floatLogo {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive : texte plus petit sur mobiles/petits écrans */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; letter-spacing: 4px; }
+            .logo-img { max-width: 80%; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="nebula"></div>
+    <div class="stars"></div>
+
+    <div class="content-container">
+        <img src="https://i.ibb.co/XxJybFzH/Design-sans-titre.png" alt="Logo Portes Ouvertes" class="logo-img">
+        
+        <h1>Bienvenue</h1>
+    </div>
+
+</body>
+</html>
